@@ -35,6 +35,6 @@ INSTALL_HEADERS = ../include/lwpr.h
 AllTarget()
 
 HeaderTarget($(INSTALL_HEADERS))
-DocTarget($(LAB_ROOT)/doxygen/Doxyfile)
+DocTarget(../doc/Doxyfile)
 
 
