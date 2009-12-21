@@ -107,8 +107,10 @@ readLWPRScriptMulti(char *fname, int new_flag, int *IDs, char **names, int n_mod
   /* open the script file */
 
   in  = fopen_strip(fname);
-  if (in == NULL) 
+  if (in == NULL) {
+    printf("\nCouldn't read LWPR script file >%s<\n",fname);
     return FALSE;
+  }
 
   /* check whether this is really a valid script file */
   
