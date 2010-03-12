@@ -1,4 +1,6 @@
 Makefile
-i486
 src/Makefile
+i486
+i386*
+powerpc/
 
