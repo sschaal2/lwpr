@@ -3660,6 +3660,7 @@ readLWPR(int ID, char *name)
   }
 
   printf("Reading file >%s< ...",string);
+  fflush(stdout);
 
   /* read the main structure */
   if (fread(&st,sizeof(LWPR),1,in)!= 1) {
@@ -3740,6 +3741,7 @@ readLWPR(int ID, char *name)
     st.norm_out_2nd         = my_vector(1,n_out_2nd);
   }
 
+
   fread_vec(in,st.norm_in_w);
   fread_vec(in,st.norm_in_reg);
   fread_vec(in,st.norm_out);
@@ -3748,6 +3750,7 @@ readLWPR(int ID, char *name)
   fread_vec(in,st.var_x_w);
   fread_vec(in,st.mean_x_reg);
   fread_vec(in,st.var_x_reg);
+  printf("%d\n",st.use_reg_2nd);
   if (st.use_reg_2nd) {
     fread_vec(in,st.norm_in_reg_2nd);
     fread_vec(in,st.norm_out_2nd);
