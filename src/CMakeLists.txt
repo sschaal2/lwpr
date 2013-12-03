@@ -65,15 +65,15 @@ install(TARGETS lwpr ARCHIVE DESTINATION ${LAB_LIBDIR})
 
 add_executable(xlwpr ${SRCS_XLWPR})
 target_link_libraries(xlwpr utility ${LAB_STD_LIBS})
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xlwpr DESTINATION ${LAB_BINDIR}/$ENV{MACHTYPE})
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xlwpr DESTINATION ${LAB_BINDIR})
 
 add_executable(xlwprstat ${SRCS_STAT})
 target_link_libraries(xlwprstat utility ${LAB_STD_LIBS})
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xlwprstat DESTINATION ${LAB_BINDIR}/$ENV{MACHTYPE})
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xlwprstat DESTINATION ${LAB_BINDIR})
 
 add_executable(xascii2clmcplot ${SRCS_A2M})
 target_link_libraries(xascii2clmcplot utility ${LAB_STD_LIBS})
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xascii2clmcplot DESTINATION ${LAB_BINDIR}/$ENV{MACHTYPE})
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/xascii2clmcplot DESTINATION ${LAB_BINDIR})
 
 install(FILES ${HEADERS} DESTINATION ${LAB_INCLUDES})
 
