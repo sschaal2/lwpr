@@ -15,8 +15,8 @@
 cmake_minimum_required(VERSION 2.8)
 
 # local defines
-set(header_directory  ${CMAKE_CURRENT_SOURCE_DIR}/../include)
-set(src_directory     ${CMAKE_CURRENT_SOURCE_DIR}/../src)
+set(header_directory  ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set(src_directory     ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(BEFORE ${header_directory})
 include_directories(BEFORE ${src_directory})
 
