@@ -49,7 +49,10 @@ set(HEADERS
   ${header_directory}/lwpr.h)
 
 add_library(lwpr ${SRCS_LIB})
-install(TARGETS lwpr ARCHIVE DESTINATION ${LAB_LIBDIR})
+target_link_libraries(lwpr utility)
+install(TARGETS lwpr 
+  ARCHIVE DESTINATION ${LAB_LIBDIR}
+  LIBRARY DESTINATION ${LAB_LIBDIR})
 
 add_executable(xlwpr ${SRCS_XLWPR})
 target_link_libraries(xlwpr utility ${LAB_STD_LIBS})
