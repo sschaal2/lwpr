@@ -50,27 +50,38 @@ set(HEADERS
 
 add_library(lwpr ${SRCS_LIB})
 target_link_libraries(lwpr utility)
-install(TARGETS lwpr 
-  ARCHIVE DESTINATION ${LAB_LIBDIR}
-  LIBRARY DESTINATION ${LAB_LIBDIR})
+list(APPEND lwpr_LIBRARIES lwpr)
 
 add_executable(xlwpr ${SRCS_XLWPR})
 target_link_libraries(xlwpr utility ${LAB_STD_LIBS})
-install(PROGRAMS 
-        ${CMAKE_CURRENT_BINARY_DIR}/xlwpr 
-        DESTINATION ${LAB_BINDIR})
 
 add_executable(xlwprstat ${SRCS_STAT})
 target_link_libraries(xlwprstat utility ${LAB_STD_LIBS})
-install(PROGRAMS 
-        ${CMAKE_CURRENT_BINARY_DIR}/xlwprstat 
-        DESTINATION ${LAB_BINDIR})
 
 add_executable(xascii2clmcplot ${SRCS_A2M})
 target_link_libraries(xascii2clmcplot utility ${LAB_STD_LIBS})
+
+
+if(NOT LAB_INCLUDES)
+  MESSAGE(FATAL_ERROR "LAB_INCLUDES must be defined")
+endif()
+if(NOT LAB_LIBDIR)
+  MESSAGE(FATAL_ERROR "LAB_LIBDIR must be defined")
+endif()
+install(TARGETS lwpr 
+  ARCHIVE DESTINATION ${LAB_LIBDIR}
+  LIBRARY DESTINATION ${LAB_LIBDIR})
+install(PROGRAMS 
+        ${CMAKE_CURRENT_BINARY_DIR}/xlwpr 
+        DESTINATION ${LAB_BINDIR})
+install(PROGRAMS 
+        ${CMAKE_CURRENT_BINARY_DIR}/xlwprstat 
+        DESTINATION ${LAB_BINDIR})
 install(PROGRAMS 
         ${CMAKE_CURRENT_BINARY_DIR}/xascii2clmcplot 
         DESTINATION ${LAB_BINDIR})
-
 install(FILES ${HEADERS} DESTINATION ${LAB_INCLUDES})
 
+# we make the libraries available for the parent scope
+# such that we can use the catkin mechanisms
+set(lwpr_LIBRARIES ${lwpr_LIBRARIES} PARENT_SCOPE)
