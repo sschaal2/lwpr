@@ -18,7 +18,6 @@ cmake_minimum_required(VERSION 2.8)
 set(header_directory  ${CMAKE_CURRENT_SOURCE_DIR}/include)
 set(src_directory     ${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(BEFORE ${header_directory})
-include_directories(BEFORE ${src_directory})
 
 include_directories(BEFORE ${utilities_directory}/include)
 
@@ -71,14 +70,14 @@ endif()
 install(TARGETS lwpr 
   ARCHIVE DESTINATION ${LAB_LIBDIR}
   LIBRARY DESTINATION ${LAB_LIBDIR})
-install(PROGRAMS 
-        ${CMAKE_CURRENT_BINARY_DIR}/xlwpr 
+install(TARGETS 
+        xlwpr 
         DESTINATION ${LAB_BINDIR})
-install(PROGRAMS 
-        ${CMAKE_CURRENT_BINARY_DIR}/xlwprstat 
+install(TARGETS 
+        xlwprstat 
         DESTINATION ${LAB_BINDIR})
-install(PROGRAMS 
-        ${CMAKE_CURRENT_BINARY_DIR}/xascii2clmcplot 
+install(TARGETS 
+        xascii2clmcplot 
         DESTINATION ${LAB_BINDIR})
 install(FILES ${HEADERS} DESTINATION ${LAB_INCLUDES})
 
