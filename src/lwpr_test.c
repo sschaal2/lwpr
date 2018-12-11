@@ -131,7 +131,7 @@ runLWPR()
   int    i,j,k,n;
   static int    rfIDlookup=0,rfIDadd=0;
   FILE  *out;
-  char   string[100];
+  char   string[110];
   static FILE *out1=NULL;
   double activation;
   double tt[100];
