@@ -65,7 +65,6 @@ extern   char **argv_global;
 
 
 /* steering variables */
-
 int      action = INIT;
 long     n_iterations;
 long     max_iterations;

@@ -451,6 +451,7 @@ generateRBFData()
   FILE *in,*out;
   int   i,j,rc=0;
   char  fname[100];
+  char  fname2[200];
   double w;
   double sum_w;
 
@@ -458,8 +459,8 @@ generateRBFData()
     return;
 
   in = fopen(fname,"r");
-  sprintf(fname,"%s.rbf",fname);
-  out = fopen(fname,"w");
+  sprintf(fname2,"%s.rbf",fname);
+  out = fopen(fname2,"w");
 
   for (;;) {
 

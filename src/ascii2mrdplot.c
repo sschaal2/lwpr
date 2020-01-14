@@ -39,7 +39,7 @@ main(int argc, char **argv)
   int    i,j,k;
   int    rc;
   char   fname[200];
-  char   fname_out[200];
+  char   fname_out[300];
   FILE  *fp;
   int    count;
   char  *string;
