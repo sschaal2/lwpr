@@ -1,5 +1,4 @@
 package(default_visibility = ["//visibility:public"])
-load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 
 cc_library(
     name = "lwpr",
@@ -7,14 +6,13 @@ cc_library(
 	"src/lwpr.c", 
 	"src/lwpr_script.c"
     ],
-    hdrs = [
+    textual_hdrs = [
 	"include/lwpr.h"
     ],
     includes = [
     	"include"
 	],
-    deps = ["//utilities:utility"],
-    visibility = ["//visibility:public"],
+    deps = ["//experimental/users/sschaal/SL/utilities:utility"],
 )
 
 cc_binary(
@@ -25,7 +23,8 @@ cc_binary(
     	"-Iutilities/include"
 	],
     deps = [
-        ":lwpr"
+        ":lwpr",
+	"//experimental/users/sschaal/SL/utilities:utility",
     ],
 )
 
@@ -37,6 +36,6 @@ cc_binary(
 	],
     deps = [
         ":lwpr",
-        "//utilities:utility"		
+        "//experimental/users/sschaal/SL/utilities:utility"		
     ],
 )
