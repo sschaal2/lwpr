@@ -3,28 +3,31 @@ package(default_visibility = ["//visibility:public"])
 cc_library(
     name = "lwpr",
     srcs = [
-	"src/lwpr.c", 
-	"src/lwpr_script.c"
-    ],
-    textual_hdrs = [
-	"include/lwpr.h"
+        "src/lwpr.c",
+        "src/lwpr_script.c",
     ],
     includes = [
-    	"include"
-	],
+        "include",
+    ],
+    textual_hdrs = [
+        "include/lwpr.h",
+    ],
     deps = ["//experimental/users/sschaal/SL/utilities:utility"],
 )
 
 cc_binary(
     name = "xlwpr",
-    srcs = ["src/lwpr_main.c","src/lwpr_test.c"],
+    srcs = [
+        "src/lwpr_main.c",
+        "src/lwpr_test.c",
+    ],
     includes = [
-    	"-Iinclude",
-    	"-Iutilities/include"
-	],
+        "-Iinclude",
+        "-Iutilities/include",
+    ],
     deps = [
         ":lwpr",
-	"//experimental/users/sschaal/SL/utilities:utility",
+        "//experimental/users/sschaal/SL/utilities:utility",
     ],
 )
 
@@ -32,10 +35,10 @@ cc_binary(
     name = "xascii2clmcplot",
     srcs = ["src/ascii2mrdplot.c"],
     includes = [
-    	"include"
-	],
+        "include",
+    ],
     deps = [
         ":lwpr",
-        "//experimental/users/sschaal/SL/utilities:utility"		
+        "//experimental/users/sschaal/SL/utilities:utility",
     ],
 )
