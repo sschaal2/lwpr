@@ -1,5 +1,15 @@
 package(default_visibility = ["//visibility:public"])
 
+# Every SL directory has a symbolic link to config/bazel to access the config files as local path.
+# While not pretty, this allows BUILD files to be independt of the SL_ROOT workspace path, and only
+# SL.bzl needs to be adjusted
+
+load(":bazel/SL.bzl", "SL_ROOT","SL_ROOT_WS")
+
+# LWPR is a libary for locally wighted projection regression. While hardly used in SL anymore, it
+# is usual for various real-time learning problems with locally weighted regression approaches.
+
+# the core LWPR library
 cc_library(
     name = "lwpr",
     srcs = [
@@ -12,9 +22,10 @@ cc_library(
     textual_hdrs = [
         "include/lwpr.h",
     ],
-    deps = ["//experimental/users/sschaal/SL/utilities:utility"],
+    deps = [SL_ROOT+"utilities:utility"],
 )
 
+# a binary that can perform function fitting on given data files and a specification file
 cc_binary(
     name = "xlwpr",
     srcs = [
@@ -27,10 +38,12 @@ cc_binary(
     ],
     deps = [
         ":lwpr",
-        "//experimental/users/sschaal/SL/utilities:utility",
+        SL_ROOT+"utilities:utility",
     ],
 )
 
+# a conversion executable to convert ascii matrix data into CLMCPLOT, a matlab
+# visualization tool
 cc_binary(
     name = "xascii2clmcplot",
     srcs = ["src/ascii2mrdplot.c"],
@@ -39,6 +52,6 @@ cc_binary(
     ],
     deps = [
         ":lwpr",
-        "//experimental/users/sschaal/SL/utilities:utility",
+        SL_ROOT+"utilities:utility",
     ],
 )

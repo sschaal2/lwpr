@@ -388,7 +388,7 @@ runLWPR()
   case PAUSE:
 
     deleteLWPR(LWPR1);
-    beep(1);
+    my_beep(1);
     exit(-1);
 		
     break;
